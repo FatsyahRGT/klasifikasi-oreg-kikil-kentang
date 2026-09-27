@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  food-classifier:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: food_classifier_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - MODEL_PATH=model_knn_final.pkl
+    restart: unless-stopped
